@@ -1,6 +1,6 @@
 ---
 title: "Bears"
-author: "Your Name Here"
+author: "Jacqueline Morris"
 date: "Spring 2026"
 output: html_document
 ---
@@ -20,22 +20,94 @@ bears$MONTH<- as.factor(bears$MONTH)
 
 ## Model LENGTH ~ NECK  this is an example  
 
+```{r}
+plot(bears$LENGTH~NECK,data=bears, pch=18)
+grid()
+```
+
+As the neck circumference of the bear increase, the length of the bear increase.   
+
+```{r}
+model.1 <- lm(bears$LENGTH~bears$NECK,data=bears)
+summary.lm(model.1)
+```
+
+P-value is below 0.05 and the adjusted R-squared is 0.7476.  
+
 
 Compare all models that predict LENGTH other than NECK.  
 Then order them from worst to best by its value of Adjusted-Rsquared (bigger is better), or by RSE (residual standard error) where smaller is better. 
 
 ## Model LENGTH ~ HEADLEN
 
+```{r}
+plot(bears$LENGTH~HEADLEN,data=bears, pch=18)
+grid()
+```
 
+
+As the length of the bear's head increase, the length of the bear increases.   
+
+```{r}
+model.2 <- lm(bears$LENGTH~bears$HEADLEN,data=bears)
+summary.lm(model.2)
+```
+P-value is below 0.05 and the adjusted R-squared is 0.8434.   
 
 ## Model LENGTH ~ HeadWTH
 
+```{r}
+plot(bears$LENGTH~HEADWTH,data=bears, pch=18)
+grid()
+```
 
+As the head width of the bear increases, the length of the bear barely increases.    
+ 
+
+```{r}
+model.4 <- lm(bears$LENGTH~bears$HEADWTH,data=bears)
+summary.lm(model.4)
+```
+
+P-value is below 0.05 and the adj. R-squared is 0.5321.    
 
 ## Model LENGTH ~ CHEST
+```{r}
+plot(bears$LENGTH~CHEST,data=bears, pch=18)
+grid()
+```
+
+As the length of the bear's chest increases, the length of the bear increases.
+
+```{r}
+model.4 <- lm(bears$LENGTH~bears$CHEST,data=bears)
+summary.lm(model.4)
+```
+
+P-value is below 0.05 and adj. R^2 is 0.7869. 
 
 
 
 ## Model LENGTH ~ WEIGHT
+```{r}
+plot(bears$LENGTH~WEIGHT,data=bears, pch=18)
+grid()
+```
 
+As the weight of the bear increases, the length of the bear increases. The curve slowly plateaus.
+
+```{r}
+model.5 <- lm(bears$LENGTH~bears$WEIGHT,data=bears)
+summary.lm(model.5)
+```
+
+P-value is below 0.05 and the adj. R^2 is 0.7423. 
+
+## Conclusion
+
+Model LENGTH~HEADWTH R^2= 0.5321    
+Model LENGTH~WEIGHT R^2= 0.7423    
+Model LENGTH~NECK R^2= 0.7476    
+Model LENGTH~CHEST R^2= 0.7869    
+Model LENGTH~HEADLEN R^2= 0.8434    
 
